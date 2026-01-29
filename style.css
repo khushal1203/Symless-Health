@@ -93,6 +93,12 @@ body {
   width: 90%;
   margin: auto;
 }
+.wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
 
 .section-title {
   font-size: 44px;
@@ -147,9 +153,10 @@ body {
 }
 
 .header-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px 100px 0px 100px;
 }
 
 .logo {
@@ -216,13 +223,16 @@ body {
 /* ================= HERO ================= */
 .hero {
   position: relative;
-  width: 100%;
+  width: 95%;
+  margin: 20px auto;
+  min-height: 80vh;
+  border-radius: 32px;
   /* max-width: 1660px; */
   max-width: 1850px;
   height: 860px;
   opacity: 1;
-  margin: 20px auto 0;
-  border-radius: 40px;
+  /* margin: 20px auto 0; */
+  /* border-radius: 40px; */
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   background:
@@ -267,7 +277,7 @@ body {
 }
 
 .hero-content h1 {
-  font-size: 80px;
+   font-size: clamp(28px, 6vw, 80px);
   font-weight: 800;
   margin-bottom: 16px;
   color: #ffffff;
@@ -275,7 +285,7 @@ body {
 
 .hero-content p {
   margin: 12px 0 24px;
-  font-size: 36px;
+  font-size: clamp(16px, 3vw, 36px);
   opacity: 0.95;
   font-weight: 400;
 }
@@ -303,6 +313,20 @@ body {
   border-radius: 20px;
   z-index: 10;
 }
+.info-bottom-right-img {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .info-bottom-right-img {
+    display: block;
+    position: absolute;
+    right: 5%;
+    bottom: -80px;
+    width: 260px;
+  }
+}
+
 
 .info::before {
   content: "";
@@ -486,36 +510,31 @@ body {
 
 /* ================= FULL IMAGE ================= */
 .full-image {
-  position: absolute;
-  top: 2600px;
-  left: 30px;
-  width: 1850px;
-  height: 860px;
-  z-index: 1;
-  animation: fadeInUp 0.8s ease-out;
+  margin: 120px auto;
+  width: 95%;
+  max-width: 1400px;
 }
 
 .full-image img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 40px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  height: auto;
 }
+
 
 /* ================= WHY ================= */
 .why {
-  margin-top: 1000px;
   animation: fadeInUp 0.8s ease-out;
   position: relative;
   z-index: 2;
+  margin: 120px auto;
+  padding: 0 20px;
 }
 
 .why-grid {
   margin-top: 65px;
   margin-bottom: 75px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+ grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 32px;
 }
 .why-container {
@@ -611,6 +630,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  flex-wrap: wrap;
 }
 
 /* ================= LOGO ================= */
@@ -629,6 +649,7 @@ body {
   gap: 120px;
   justify-content: center;
   text-align: left; /* vertical list ke liye */
+  flex-wrap: wrap;
 }
 
 /* HEADINGS */
@@ -960,3 +981,22 @@ body {
     position: relative;
   }
 }
+@media (max-width: 768px) {
+  section {
+    margin: 60px 0;
+  }
+
+  .specialties-left {
+    text-align: center;
+  }
+
+  .footer {
+    padding: 50px 20px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
