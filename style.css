@@ -17,6 +17,16 @@ body {
   overflow-x: hidden;
 }
 
+:root {
+  --page-max: 1280px;
+  --page-pad: clamp(16px, 3vw, 24px);
+}
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* ================= ANIMATIONS ================= */
 @keyframes fadeInUp {
   from {
@@ -94,9 +104,9 @@ body {
   margin: auto;
 }
 .wrapper {
-  max-width: 1280px;
+  max-width: var(--page-max);
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 var(--page-pad);
 }
 
 
@@ -153,10 +163,13 @@ body {
 }
 
 .header-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0px 100px 0px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 var(--page-pad);
 }
 
 .logo {
@@ -223,20 +236,15 @@ body {
 /* ================= HERO ================= */
 .hero {
   position: relative;
-  width: 95%;
-  margin: 20px auto;
-  min-height: 80vh;
+  width: min(96%, 1850px);
+  margin: clamp(12px, 2vw, 20px) auto;
+  min-height: clamp(420px, 70vh, 820px);
   border-radius: 32px;
-  /* max-width: 1660px; */
-  max-width: 1850px;
-  height: 860px;
+  height: auto;
   opacity: 1;
-  /* margin: 20px auto 0; */
-  /* border-radius: 40px; */
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  background:
-    linear-gradient(
+  background: linear-gradient(
       253.35deg,
       rgba(0, 0, 0, 0) 42.3%,
       rgba(0, 0, 0, 0.2) 98.3%
@@ -266,11 +274,10 @@ body {
 
 .hero-content {
   position: absolute;
-  width: 90%;
-  max-width: 1086px;
+  width: min(90%, 920px);
   opacity: 1;
-  bottom: 10%;
-  left: 5%;
+  bottom: clamp(24px, 8vh, 80px);
+  left: clamp(20px, 5vw, 60px);
   gap: 40px;
   color: #fff;
   z-index: 2;
@@ -294,37 +301,25 @@ body {
 .info {
   background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
   width: 100%;
-  /* max-width: 1660px; */
   max-width: 1850px;
   margin: 60px auto;
   border-radius: 32px;
-  padding: 80px 0;
+  padding: clamp(40px, 6vw, 80px) 0  clamp(60px, 8vw, 120px);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   animation: fadeInUp 0.8s ease-out;
 }
 
 .info-bottom-right-img {
   position: absolute;
-  width: 340px;
-  height: 260px;
-  right: 330px;
-  top: 1820px;
-  border-radius: 20px;
-  z-index: 10;
-}
-.info-bottom-right-img {
-  display: none;
-}
-
-@media (min-width: 1024px) {
-  .info-bottom-right-img {
-    display: block;
-    position: absolute;
-    right: 5%;
-    bottom: -80px;
-    width: 260px;
-  }
+  right: 250px;
+  bottom: -15px;
+  transform: none;
+  width: clamp(180px, 22vw, 300px);
+  height: auto;
+  z-index: 1;
+  display: block;
+  pointer-events: none;
 }
 
 
@@ -345,23 +340,22 @@ body {
 
 .info-grid {
   display: grid;
-  grid-template-columns: 48% 52%; /* image thodi tight, text ko space */
-  gap: 40px;
+  grid-template-columns: minmax(280px, 520px) minmax(320px, 1fr);
+  gap: clamp(24px, 4vw, 60px);
   align-items: center;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .info-image {
   animation: fadeInLeft 0.8s ease-out 0.2s both;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .info-image img {
   width: 100%;
-  max-width: 520px; /* image ko control */
-  padding: 0;
+  max-width: clamp(280px, 40vw, 520px);
   height: auto;
   object-fit: contain;
   border-radius: 24px;
@@ -376,9 +370,9 @@ body {
 .info-text h2 {
   font-family: "Onest", sans-serif;
   font-weight: 600;
-  font-size: 40px; /* 44 → 40 */
+  font-size: clamp(26px, 3.2vw, 40px);
   line-height: 1.2;
-  max-width: 701px;
+  max-width: 38ch;
   letter-spacing: -3%;
   margin-bottom: 20px;
   color: #1e40af;
@@ -387,61 +381,90 @@ body {
 .info-text p {
   font-family: "Onest", sans-serif;
   font-weight: 400;
-  font-size: 22px; /* 24 → 22 */
+  font-size: clamp(16px, 2vw, 22px);
   line-height: 1.35;
-  max-width: 700px;
+  max-width: 60ch;
   letter-spacing: -3%;
   margin-bottom: 32px;
   color: #475569;
 }
 
+@media (max-width: 1024px) {
+  .info {
+    padding: clamp(36px, 7vw, 64px) 0;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .info-text h2,
+  .info-text p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .info-bottom-right-img {
+    position: static;
+    transform: none;
+    margin: 24px auto 0;
+    width: min(70%, 260px);
+  }
+}
+
 /* ================= SPECIALTIES ================= */
 .specialties {
-  padding: 100px 0;
-  margin-top: 195px;
+  padding: clamp(60px, 8vw, 100px) 0;
+  margin-top: clamp(40px, 8vw, 120px);
   animation: fadeInUp 0.8s ease-out;
 }
 
 .specialties-container {
   display: flex;
-  gap: 60px;
+  gap: clamp(24px, 5vw, 60px);
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .specialties-left {
-  flex: 1;
-  max-width: 500px;
+  flex: 1 1 420px;
+  max-width: 640px;
 }
 
 .specialties-left h2 {
-  font-size: 44px;
+  font-size: clamp(26px, 3.4vw, 44px);
   font-weight: 600;
   margin-bottom: 20px;
   color: #1e40af;
   line-height: 1.2;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .specialties-left p {
-  font-size: 18px;
+  font-size: clamp(15px, 1.8vw, 18px);
   line-height: 1.6;
   color: #475569;
   margin-bottom: 32px;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .specialties-right {
   display: flex;
   gap: 20px;
-  flex-wrap: nowrap;
-  margin-top: 60px;
+  flex-wrap: wrap;
+  margin-top: clamp(20px, 6vw, 60px);
+  justify-content: center;
+  flex: 1 1 420px;
 }
 
 .specialty-card {
-  width: 173.75px;
+  width: clamp(150px, 20vw, 180px);
+  flex: 1 1 160px;
+  max-width: 200px;
   height: auto;
-  min-height: 189px;
+  min-height: 170px;
   padding: 40px 20px;
   background: rgba(51, 89, 164, 0.1);
   border-radius: 30px;
@@ -510,7 +533,7 @@ body {
 
 /* ================= FULL IMAGE ================= */
 .full-image {
-  margin: 120px auto;
+  margin: clamp(60px, 8vw, 120px) auto;
   width: 95%;
   max-width: 1400px;
 }
@@ -526,34 +549,31 @@ body {
   animation: fadeInUp 0.8s ease-out;
   position: relative;
   z-index: 2;
-  margin: 120px auto;
+  margin: clamp(60px, 8vw, 120px) auto;
   padding: 0 20px;
 }
 
 .why-grid {
-  margin-top: 65px;
-  margin-bottom: 75px;
-  display: flex;
- grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 32px;
+  margin-top: clamp(32px, 6vw, 65px);
+  margin-bottom: clamp(40px, 7vw, 75px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: clamp(20px, 3vw, 32px);
 }
 .why-container {
   display: grid;
   align-items: center;
-  justify-content: space-evenly;
 }
 
 .why-card {
   background: linear-gradient(180deg, #ebeff6 0%, #edf9fd 100%);
-  padding: 40px;
+  padding: clamp(24px, 4vw, 40px);
   border-radius: 20px;
   border: 1px solid rgba(56, 189, 248, 0.1);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  width: 461px;
-  height: 252px;
 }
 
 .why-card::before {
@@ -617,11 +637,11 @@ body {
 /* ================= FOOTER MAIN ================= */
 .footer {
   background: #1d5197;
-  width: 95%;
+  width: min(95%, 1280px);
   margin: 0 auto 60px;
   border-radius: 40px;
   color: #ffffff;
-  padding: 80px 60px 30px;
+  padding: clamp(40px, 6vw, 80px) clamp(24px, 5vw, 60px) 30px;
   position: relative;
 }
 
@@ -646,7 +666,7 @@ body {
 /* ================= MENUS ================= */
 .footer-menus {
   display: flex;
-  gap: 120px;
+  gap: clamp(32px, 8vw, 120px);
   justify-content: center;
   text-align: left; /* vertical list ke liye */
   flex-wrap: wrap;
@@ -682,7 +702,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 100px;
+  margin-top: clamp(32px, 8vw, 100px);
   padding-top: 30px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -719,12 +739,8 @@ body {
     grid-template-columns: 1fr;
   }
 
-  .specialty-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .why-grid {
-    grid-template-columns: 1fr;
+  .specialties-left {
+    text-align: center;
   }
 }
 
@@ -734,30 +750,27 @@ body {
   }
 
   .hero-content {
-    left: 20px;
-    bottom: 30px;
+    left: 16px;
+    bottom: 24px;
   }
 
   .hero-content h1 {
     font-size: 30px;
   }
 
-  .specialty-grid {
-    grid-template-columns: 1fr;
-  }
-
   .footer-grid {
-    grid-template-columns: 1fr 1fr;
+    flex-direction: column;
+    gap: 32px;
   }
 }
 .hero-section-img {
   position: absolute;
-  width: 515.48px;
-  height: 517.92px;
+  width: clamp(220px, 30vw, 516px);
+  height: auto;
   opacity: 0.5;
-  top: 408px;
-  /* left: 1175px; */
-  left: 1380px;
+  top: 50%;
+  right: clamp(16px, 6vw, 60px);
+  transform: translateY(-50%);
   border: 3px solid transparent;
   z-index: 1;
 }
@@ -783,10 +796,7 @@ body {
   }
 
   .hero-section-img {
-    width: 30%;
-    max-width: 400px;
-    bottom: 10%;
-    right: 5%;
+    width: clamp(200px, 26vw, 400px);
   }
 }
 
@@ -812,8 +822,7 @@ body {
   }
 
   .hero-section-img {
-    width: 35%;
-    bottom: 15%;
+    width: clamp(180px, 30vw, 320px);
   }
 
   .logo-img {
@@ -983,7 +992,7 @@ body {
 }
 @media (max-width: 768px) {
   section {
-    margin: 60px 0;
+    margin: 48px 0;
   }
 
   .specialties-left {
@@ -997,6 +1006,58 @@ body {
   .footer-bottom {
     flex-direction: column;
     gap: 20px;
+  }
+}
+
+/* ================= CONSOLIDATED RESPONSIVE OVERRIDES ================= */
+@media (max-width: 1400px) {
+  .info-bottom-right-img {
+    right: 140px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .info-bottom-right-img {
+    right: 80px;
+    width: clamp(170px, 20vw, 260px);
+  }
+
+  .specialties-container {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 992px) {
+  .specialties-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .specialties-left {
+    max-width: 680px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    left: 16px;
+    right: 16px;
+  }
+
+  .info-bottom-right-img {
+    position: static;
+    margin: 24px auto 0;
+  }
+
+  .specialty-card {
+    max-width: 240px;
+  }
+}
+
+@media (max-width: 576px) {
+  .specialty-card {
+    width: 100%;
+    max-width: 100%;
   }
 }
 
