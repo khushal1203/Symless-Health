@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Symless Health - Better Healthcare Solutions</title>
+
+  <!-- PRELOAD CRITICAL IMAGES -->
+  <link rel="preload" href="/assets/images/hero.svg" as="image" type="image/svg+xml">
+  <link rel="preload" href="/assets/images/section1.svg" as="image" type="image/svg+xml">
+
+  <!-- FONTS -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FAVICON -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'></svg>">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+  <div class="container header-inner">
+    <div class="logo">
+      <img src="/assets/images/logo.svg" alt="Symless Health" class="logo-img">
+    </div>
+
+    <nav class="nav">
+      <a href="#home">Home</a>
+      <a href="#services">Businesses</a>
+      <a href="#about">Members</a>
+      <a href="#providers">Providers</a>
+      <a href="#contact">About Us</a>
+      <button class="btn contact-btn">Contact Us</button>
+    </nav>
+
+    <div class="mobile-menu" onclick="toggleMobileMenu()">
+      <span></span><span></span><span></span>
+    </div>
+
+    <div class="mobile-nav" id="mobileNav">
+      <a href="#home">Home</a>
+      <a href="#services">Businesses</a>
+      <a href="#about">Members</a>
+      <a href="#providers">Providers</a>
+      <a href="#contact">About Us</a>
+      <button class="btn contact-btn">Contact Us</button>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
+  <img src="/assets/images/hero.svg" alt="Healthcare Excellence" class="hero-img">
+  <img src="/assets/images/herosection.svg" alt="Hero Section" class="hero-section-img">
+
+  <div class="hero-content">
+    <h1>Higher Quality. Lower Cost.</h1>
+    <p>A better way to deliver specialty care</p>
+    <button class="btn contact-btn">Learn More</button>
+  </div>
+</section>
+
+<!-- ================= SECTION 1 ================= -->
+<section class="info" id="about">
+  <div class="container info-grid">
+    <div class="info-image">
+      <img src="/assets/images/section1.svg" alt="Healthcare Innovation" loading="lazy">
+    </div>
+
+    <div class="info-text">
+      <h2>Symless Health is changing how healthcare is accessed and delivered internationally.</h2>
+      <p>
+        We are a value-based network of U.S.-certified hospitals and Centers of Excellence that negotiate directly with vetted healthcare providers.
+      </p>
+      <button class="btn contact-btn">Contact Us</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SPECIALTIES ================= -->
+<section class="specialties" id="services">
+  <div class="container">
+    <h2 class="section-title">Exceptional Specialty Care for Priority Conditions</h2>
+
+    <div class="specialty-grid">
+      <div class="specialty-card">🔬 Surgery</div>
+      <div class="specialty-card">⚖️ Bariatric</div>
+      <div class="specialty-card">❤️ Cardiac</div>
+      <div class="specialty-card">✨ Elective</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FULL IMAGE ================= -->
+<section class="full-image">
+  <img src="/assets/images/section2.svg" alt="Medical Excellence" loading="lazy">
+</section>
+
+<!-- ================= WHY ================= -->
+<section class="why" id="providers">
+  <div class="container">
+    <h2 class="section-title">Why Choose Symless Health?</h2>
+
+    <div class="why-grid">
+      <div class="why-card">
+        <h4>💰 Eliminate Hidden Medical Costs</h4>
+        <p>Transparent bundled pricing with no surprise bills.</p>
+      </div>
+
+      <div class="why-card">
+        <h4>🏥 U.S. Accredited Hospitals</h4>
+        <p>Trusted international care partners.</p>
+      </div>
+
+      <div class="why-card">
+        <h4>🩺 Specialty Care Network</h4>
+        <p>Dedicated access to vetted specialists.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer" id="contact">
+  <div class="container footer-grid">
+    <div>
+      <img src="/assets/images/logo.svg" alt="Symless Health" class="logo-img">
+      <p style="margin-top:16px;opacity:.8;">Transforming healthcare delivery worldwide.</p>
+    </div>
+
+    <div>
+      <h5>For Businesses</h5>
+      <p>Employers</p>
+      <p>Care Networks</p>
+      <p>Healthcare Providers</p>
+    </div>
+
+    <div>
+      <h5>For Members</h5>
+      <p>How It Works</p>
+      <p>Support Center</p>
+    </div>
+
+    <div>
+      <h5>Company</h5>
+      <p>About Us</p>
+      <p>Careers</p>
+    </div>
+  </div>
+
+  <p class="copy">© 2024 Symless Health. All rights reserved.</p>
+</footer>
+
+<script>
+function toggleMobileMenu() {
+  document.getElementById('mobileNav').classList.toggle('active');
+}
+
+document.querySelectorAll('.mobile-nav a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('mobileNav').classList.remove('active');
+  });
+});
+</script>
+
+</body>
+</html>
