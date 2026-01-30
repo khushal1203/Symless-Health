@@ -39,7 +39,20 @@
     <link rel="stylesheet" href="style.css" />
     <script src="image-loader.js" defer></script>
   </head>
-  <body>
+  <body class="loading">
+    <!-- Hospital Loader -->
+    <div id="logoLoader" class="logo-loader">
+      <div class="loader-container">
+        <div class="logo-wrapper">
+          <img src="/assets/images/Logo.svg" alt="Symless Health" class="loader-logo">
+          <div class="heartbeat-line">
+            <svg width="200" height="60" viewBox="0 0 200 60">
+              <path d="M20,30 L40,30 L50,15 L60,45 L70,10 L80,50 L90,30 L180,30" stroke="#1D5197" stroke-width="3" fill="none" class="pulse-path"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- ================= HEADER ================= -->
     <header class="header">
       <div class="header-inner">
@@ -61,7 +74,7 @@
         </nav>
 
         <div class="mobile-menu" onclick="toggleMobileMenu()">
-          <span></span><span></span><span></span>
+          <i class="fas fa-bars" id="menuIcon"></i>
         </div>
 
         <div class="mobile-nav" id="mobileNav">
@@ -96,9 +109,9 @@
     </section>
 
     <!-- ================= SECTION 1 ================= -->
-    <section class="info" id="about">
+    <section class="info animate-on-scroll" id="about">
       <div class="info-grid wrapper">
-        <div class="info-image">
+        <div class="info-image fade-in-left">
           <img
             src="/assets/images/section1.svg"
             alt="Healthcare Innovation"
@@ -106,7 +119,7 @@
           />
         </div>
 
-        <div class="info-text">
+        <div class="info-text fade-in-right">
           <h2>
             Symless Health is changing how healthcare is accessed and delivered
             internationally.
@@ -124,14 +137,14 @@
       <img
         src="/assets/images/section-3.svg"
         alt="Healthcare"
-        class="info-bottom-right-img"
+        class="info-bottom-right-img scale-in"
       />
     </section>
 
     <!-- ================= SPECIALTIES ================= -->
-    <section class="specialties" id="services">
+    <section class="specialties animate-on-scroll" id="services">
       <div class="specialties-container wrapper">
-        <div class="specialties-left">
+        <div class="specialties-left fade-in-left">
           <h2>Exceptional specialty care<br />for priority conditions</h2>
           <p>
             Our innovative approach enables employers and care<br />networks to
@@ -142,7 +155,7 @@
         </div>
 
         <div class="specialties-right">
-          <div class="specialty-card">
+          <div class="specialty-card stagger-animation">
             <img
               src="/assets/images/icons/sergery.svg"
               alt="Surgery"
@@ -150,7 +163,7 @@
             />
             <span>Surgery</span>
           </div>
-          <div class="specialty-card">
+          <div class="specialty-card stagger-animation">
             <img
               src="/assets/images/icons/bartict.svg"
               alt="Bariatric"
@@ -158,7 +171,7 @@
             />
             <span>Bariatric</span>
           </div>
-          <div class="specialty-card">
+          <div class="specialty-card stagger-animation">
             <img
               src="/assets/images/icons/cardic.svg"
               alt="Cardiac"
@@ -166,7 +179,7 @@
             />
             <span>Cardiac</span>
           </div>
-          <div class="specialty-card">
+          <div class="specialty-card stagger-animation">
             <img
               src="/assets/images/icons/effidavit.svg"
               alt="Elective"
@@ -179,7 +192,7 @@
     </section>
 
     <!-- ================= FULL VIDEO ================= -->
-    <section class="full-video">
+    <section class="full-video scale-in">
       <video
         src="/assets/images/section-4Video.mp4"
         autoplay
@@ -190,12 +203,12 @@
     </section>
 
     <!-- ================= WHY ================= -->
-    <section class="why" id="providers">
+    <section class="why animate-on-scroll" id="providers">
       <div class="why-container">
-        <h2 class="section-title">Why Symless Health?</h2>
+        <h2 class="section-title fade-in-left">Why Symless Health?</h2>
 
         <div class="why-grid">
-          <div class="why-card">
+          <div class="why-card stagger-animation">
             <div class="why-icon">
               <img
                 src="/assets/images/icons2/elimate.svg"
@@ -206,7 +219,7 @@
             <p>Bundled, all-inclusive pricing with no surprise charges.</p>
           </div>
 
-          <div class="why-card">
+          <div class="why-card stagger-animation">
             <div class="why-icon">
               <img
                 src="/assets/images/icons2/hospital.svg"
@@ -220,7 +233,7 @@
             </p>
           </div>
 
-          <div class="why-card">
+          <div class="why-card stagger-animation">
             <div class="why-icon">
               <img
                 src="/assets/images/icons2/contacts.svg"
@@ -237,10 +250,10 @@
     </section>
 
     <!-- ================= FOOTER ================= -->
-    <footer class="footer" id="contact">
+    <footer class="footer animate-on-scroll" id="contact">
       <div class=" footer-grid">
         <!-- LEFT: LOGO -->
-        <div class="footer-logo">
+        <div class="footer-logo fade-in-left">
           <img
             src="/assets/images/LogoFotter.svg"
             alt="Symless Health"
@@ -249,7 +262,7 @@
         </div>
 
         <!-- RIGHT: MENUS -->
-        <div class="footer-menus">
+        <div class="footer-menus fade-in-right">
           <div>
             <h5>Businesses</h5>
             <p>Employers</p>
@@ -272,7 +285,7 @@
         </div>
       </div>
 
-      <div class="footer-bottom">
+      <div class="footer-bottom scale-in">
         <div class="social-icons">
           <a href="#"><i class="fab fa-instagram"></i></a>
           <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -287,14 +300,92 @@
 
     <script>
       function toggleMobileMenu() {
-        document.getElementById("mobileNav").classList.toggle("active");
+        const mobileNav = document.getElementById("mobileNav");
+        const menuIcon = document.getElementById("menuIcon");
+        
+        mobileNav.classList.toggle("active");
+        
+        if (mobileNav.classList.contains("active")) {
+          menuIcon.className = "fas fa-times";
+        } else {
+          menuIcon.className = "fas fa-bars";
+        }
       }
 
-      document.querySelectorAll(".mobile-nav a").forEach((link) => {
-        link.addEventListener("click", () => {
-          document.getElementById("mobileNav").classList.remove("active");
-        });
+      // Close mobile menu on resize to desktop
+      window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+          const mobileNav = document.getElementById("mobileNav");
+          const menuIcon = document.getElementById("menuIcon");
+          mobileNav.classList.remove("active");
+          menuIcon.className = "fas fa-bars";
+        }
       });
+
+      // Hide logo loader when page is fully loaded
+      window.addEventListener('load', function() {
+        const loader = document.getElementById('logoLoader');
+        document.body.classList.remove('loading');
+        loader.style.opacity = '0';
+        setTimeout(() => {
+          loader.style.display = 'none';
+        }, 500);
+      });
+
+      // Scroll Animation Observer
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+            
+            // Handle stagger animations
+            if (entry.target.classList.contains('specialties-right') || 
+                entry.target.classList.contains('why-grid')) {
+              const staggerElements = entry.target.querySelectorAll('.stagger-animation');
+              staggerElements.forEach((el, index) => {
+                setTimeout(() => {
+                  el.classList.add('animate');
+                }, index * 300);
+              });
+            }
+          }
+        });
+      }, observerOptions);
+
+      // Observe all animation elements
+      document.addEventListener('DOMContentLoaded', () => {
+        const animateElements = document.querySelectorAll(
+          '.animate-on-scroll, .fade-in-left, .fade-in-right, .scale-in'
+        );
+        
+        animateElements.forEach(el => {
+          observer.observe(el);
+        });
+
+        // Special handling for stagger animations
+        const specialtiesRight = document.querySelector('.specialties-right');
+        const whyGrid = document.querySelector('.why-grid');
+        
+        if (specialtiesRight) observer.observe(specialtiesRight);
+        if (whyGrid) observer.observe(whyGrid);
+        
+        // Observe info section elements individually
+        const infoImage = document.querySelector('.info-image');
+        const infoText = document.querySelector('.info-text');
+        const infoBottomImg = document.querySelector('.info-bottom-right-img');
+        
+        if (infoImage) observer.observe(infoImage);
+        if (infoText) observer.observe(infoText);
+        if (infoBottomImg) observer.observe(infoBottomImg);
+      });
+    </script>
+  </body>
+</html>
     </script>
   </body>
 </html>
