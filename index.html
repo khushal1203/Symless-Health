@@ -37,6 +37,7 @@
     <link rel="icon" type="image/svg+xml" href="/assets/images/Logo.svg" />
 
     <link rel="stylesheet" href="style.css" />
+    <script src="image-loader.js" defer></script>
   </head>
   <body>
     <!-- ================= HEADER ================= -->
@@ -177,18 +178,20 @@
       </div>
     </section>
 
-    <!-- ================= FULL IMAGE ================= -->
-    <section class="full-image wrapper">
-      <img
-        src="/assets/images/section2.svg"
-        alt="Medical Excellence"
+    <!-- ================= FULL VIDEO ================= -->
+    <section class="full-video">
+      <video
+        src="/assets/images/section-4Video.mp4"
+        autoplay
+        muted
+        loop
         loading="lazy"
-      />
+      ></video>
     </section>
 
     <!-- ================= WHY ================= -->
     <section class="why" id="providers">
-      <div class="why-container wrapper">
+      <div class="why-container">
         <h2 class="section-title">Why Symless Health?</h2>
 
         <div class="why-grid">
@@ -235,7 +238,7 @@
 
     <!-- ================= FOOTER ================= -->
     <footer class="footer" id="contact">
-      <div class=" footer-grid wrapper">
+      <div class=" footer-grid">
         <!-- LEFT: LOGO -->
         <div class="footer-logo">
           <img
