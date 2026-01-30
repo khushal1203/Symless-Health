@@ -44,10 +44,20 @@
     <div id="logoLoader" class="logo-loader">
       <div class="loader-container">
         <div class="logo-wrapper">
-          <img src="/assets/images/Logo.svg" alt="Symless Health" class="loader-logo">
+          <img
+            src="/assets/images/Logo.svg"
+            alt="Symless Health"
+            class="loader-logo"
+          />
           <div class="heartbeat-line">
             <svg width="200" height="60" viewBox="0 0 200 60">
-              <path d="M20,30 L40,30 L50,15 L60,45 L70,10 L80,50 L90,30 L180,30" stroke="#1D5197" stroke-width="3" fill="none" class="pulse-path"/>
+              <path
+                d="M20,30 L40,30 L50,15 L60,45 L70,10 L80,50 L90,30 L180,30"
+                stroke="#1D5197"
+                stroke-width="3"
+                fill="none"
+                class="pulse-path"
+              />
             </svg>
           </div>
         </div>
@@ -251,7 +261,7 @@
 
     <!-- ================= FOOTER ================= -->
     <footer class="footer animate-on-scroll" id="contact">
-      <div class=" footer-grid">
+      <div class="footer-grid">
         <!-- LEFT: LOGO -->
         <div class="footer-logo fade-in-left">
           <img
@@ -302,9 +312,9 @@
       function toggleMobileMenu() {
         const mobileNav = document.getElementById("mobileNav");
         const menuIcon = document.getElementById("menuIcon");
-        
+
         mobileNav.classList.toggle("active");
-        
+
         if (mobileNav.classList.contains("active")) {
           menuIcon.className = "fas fa-times";
         } else {
@@ -313,7 +323,7 @@
       }
 
       // Close mobile menu on resize to desktop
-      window.addEventListener('resize', function() {
+      window.addEventListener("resize", function () {
         if (window.innerWidth > 768) {
           const mobileNav = document.getElementById("mobileNav");
           const menuIcon = document.getElementById("menuIcon");
@@ -323,33 +333,36 @@
       });
 
       // Hide logo loader when page is fully loaded
-      window.addEventListener('load', function() {
-        const loader = document.getElementById('logoLoader');
-        document.body.classList.remove('loading');
-        loader.style.opacity = '0';
+      window.addEventListener("load", function () {
+        const loader = document.getElementById("logoLoader");
+        document.body.classList.remove("loading");
+        loader.style.opacity = "0";
         setTimeout(() => {
-          loader.style.display = 'none';
+          loader.style.display = "none";
         }, 500);
       });
 
       // Scroll Animation Observer
       const observerOptions = {
         threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        rootMargin: "0px 0px -50px 0px",
       };
 
       const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('animate');
-            
+            entry.target.classList.add("animate");
+
             // Handle stagger animations
-            if (entry.target.classList.contains('specialties-right') || 
-                entry.target.classList.contains('why-grid')) {
-              const staggerElements = entry.target.querySelectorAll('.stagger-animation');
+            if (
+              entry.target.classList.contains("specialties-right") ||
+              entry.target.classList.contains("why-grid")
+            ) {
+              const staggerElements =
+                entry.target.querySelectorAll(".stagger-animation");
               staggerElements.forEach((el, index) => {
                 setTimeout(() => {
-                  el.classList.add('animate');
+                  el.classList.add("animate");
                 }, index * 300);
               });
             }
@@ -358,34 +371,31 @@
       }, observerOptions);
 
       // Observe all animation elements
-      document.addEventListener('DOMContentLoaded', () => {
+      document.addEventListener("DOMContentLoaded", () => {
         const animateElements = document.querySelectorAll(
-          '.animate-on-scroll, .fade-in-left, .fade-in-right, .scale-in'
+          ".animate-on-scroll, .fade-in-left, .fade-in-right, .scale-in",
         );
-        
-        animateElements.forEach(el => {
+
+        animateElements.forEach((el) => {
           observer.observe(el);
         });
 
         // Special handling for stagger animations
-        const specialtiesRight = document.querySelector('.specialties-right');
-        const whyGrid = document.querySelector('.why-grid');
-        
+        const specialtiesRight = document.querySelector(".specialties-right");
+        const whyGrid = document.querySelector(".why-grid");
+
         if (specialtiesRight) observer.observe(specialtiesRight);
         if (whyGrid) observer.observe(whyGrid);
-        
+
         // Observe info section elements individually
-        const infoImage = document.querySelector('.info-image');
-        const infoText = document.querySelector('.info-text');
-        const infoBottomImg = document.querySelector('.info-bottom-right-img');
-        
+        const infoImage = document.querySelector(".info-image");
+        const infoText = document.querySelector(".info-text");
+        const infoBottomImg = document.querySelector(".info-bottom-right-img");
+
         if (infoImage) observer.observe(infoImage);
         if (infoText) observer.observe(infoText);
         if (infoBottomImg) observer.observe(infoBottomImg);
       });
-    </script>
-  </body>
-</html>
     </script>
   </body>
 </html>
